@@ -8,7 +8,7 @@ CREATE TABLE ticket.help_desk_ticket
     username    VARCHAR(100) NOT NULL,
     category    VARCHAR(50)  NOT NULL,
     priority    VARCHAR(20)  NOT NULL,
-    status      VARCHAR(30)  NOT NULL,
+    status      VARCHAR(30) NOT NULL DEFAULT 'OPEN',
     email       VARCHAR(30)  NOT NULL,
 
     summary     TEXT         NOT NULL,

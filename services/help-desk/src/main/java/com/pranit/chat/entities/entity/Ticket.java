@@ -58,7 +58,8 @@ public class Ticket {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private Status status;
+    @Builder.Default
+    private Status status = Status.OPEN;
 
     @Column(name = "summary", nullable = false, columnDefinition = "TEXT")
     private String summary;
