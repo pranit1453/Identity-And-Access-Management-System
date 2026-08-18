@@ -26,6 +26,12 @@ spring:
     validate-on-migrate: true
     clean-disabled: true
     out-of-order: false
+  # Oauth2 Resource Server Configuration
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:key/public_key.pem
   # AI Configuration
   ai:
     chat:
@@ -66,3 +72,8 @@ info:
     name: access-hub
     description: "This is a help desk agent"
     version: "1.0.0"
+
+# Client URL
+access-hub:
+  base-url: ${PORTAL_URL}
+  api-version: ${API_VERSION}

@@ -1,6 +1,7 @@
 package com.pranit.chat.agent.service.impl;
 
 import com.pranit.chat.agent.service.TicketService;
+import com.pranit.chat.client.service.AccessHubClient;
 import com.pranit.chat.dto.TicketRequest;
 import com.pranit.chat.dto.TicketResponse;
 import com.pranit.chat.entities.entity.Ticket;
@@ -22,10 +23,16 @@ public class TicketServiceImpl implements TicketService {
 
     private final TicketRepository ticketRepository;
     private final TicketMapper ticketMapper;
+    private final AccessHubClient accessHubClient;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public TicketResponse createTicket(final TicketRequest request) {
+        if (!accessHubClient.checkUserNameExists(request.username())) {
+            return TicketResponse.builder()
+                    .message("Please provide valid username exists on portal.")
+                    .build();
+        }
         if (ticketRepository.existsBySummary(request.summary())) {
             log.warn("Ticket already exists with summary {}", request.summary());
             return TicketResponse.builder()
