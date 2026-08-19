@@ -19,31 +19,31 @@ public class UserRoleController {
 
     private final UserRoleAssignService userRoleAssignService;
 
-    @PostMapping("/assign")
+    @PostMapping(value = "/assign", version = "v1")
     public ResponseEntity<AssignResponse> assignRoleToUser(@RequestBody @Valid AssignUserRoleRequest request) {
         final AssignResponse response = userRoleAssignService.assignRoleToUser(request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PatchMapping("/revoke/{userRoleId}")
+    @PatchMapping(value = "/revoke/{userRoleId}", version = "v1")
     public ResponseEntity<RevokeResponse> revokeRoleAssignToUser(@PathVariable @NotNull Long userRoleId, @RequestBody @Valid RevokeUserRoleRequest request) {
         final RevokeResponse response = userRoleAssignService.revokeRoleAssignedToUser(userRoleId, request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PatchMapping("/assign/{userRoleId}")
+    @PatchMapping(value = "/assign/{userRoleId}", version = "v1")
     public ResponseEntity<AssignResponse> reAssignRoleToUser(@PathVariable @NotNull Long userRoleId, @RequestBody @Valid AssignUserRoleRequest request) {
         final AssignResponse response = userRoleAssignService.reAssignRoleToUser(userRoleId, request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/get/{userRoleId}")
+    @GetMapping(value = "/get/{userRoleId}", version = "v1")
     public ResponseEntity<UserRoleResponse> fetchUserRoleById(@PathVariable @NotNull Long userRoleId) {
         final UserRoleResponse response = userRoleAssignService.fetchUserRoleById(userRoleId);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all", version = "v1")
     public ResponseEntity<PageResponse<UserRoleResponse>> findAllRolesForParticularUser(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "5") int size,

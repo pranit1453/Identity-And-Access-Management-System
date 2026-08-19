@@ -9,7 +9,7 @@ import com.pranit.accesshub.authorization.exception.PermissionAlreadyExists;
 import com.pranit.accesshub.authorization.exception.PermissionNotFound;
 import com.pranit.accesshub.authorization.mapper.PermissionMapper;
 import com.pranit.accesshub.authorization.repository.PermissionRepository;
-import com.pranit.accesshub.authorization.service.PermissionCrudService;
+import com.pranit.accesshub.authorization.service.PermissionService;
 import com.pranit.accesshub.authorization.specification.PermissionSpecification;
 import com.pranit.accesshub.entities.entity.Permission;
 import com.pranit.accesshub.wrapper.PageResponse;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Validated
-public class PermissionCrudServiceImpl implements PermissionCrudService {
+public class PermissionServiceImpl implements PermissionService {
 
     private final PermissionRepository permissionCrudRepository;
     private final PermissionMapper permissionMapper;

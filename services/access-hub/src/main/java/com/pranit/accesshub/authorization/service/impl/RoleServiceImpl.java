@@ -11,7 +11,7 @@ import com.pranit.accesshub.authorization.exception.RoleNotFoundException;
 import com.pranit.accesshub.authorization.mapper.RoleMapper;
 import com.pranit.accesshub.authorization.repository.RoleRepository;
 import com.pranit.accesshub.authorization.repository.UserRoleRepository;
-import com.pranit.accesshub.authorization.service.RoleCrudService;
+import com.pranit.accesshub.authorization.service.RoleService;
 import com.pranit.accesshub.authorization.specification.RoleSpecification;
 import com.pranit.accesshub.entities.entity.Role;
 import com.pranit.accesshub.wrapper.PageResponse;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Validated
-public class RoleCrudServiceImpl implements RoleCrudService {
+public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleCrudRepository;
     private final RoleMapper roleMapper;
