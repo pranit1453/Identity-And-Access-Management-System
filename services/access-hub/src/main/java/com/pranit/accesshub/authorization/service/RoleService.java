@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Set;
 
-public interface RoleCrudService {
+public interface RoleService {
 
     void createNewRole(@Valid CreateRoleRequest request);
 

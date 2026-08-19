@@ -20,25 +20,25 @@ public class RolePermissionController {
 
     private final RolePermissionAssignService rolePermissionAssignService;
 
-    @PostMapping("/assign")
+    @PostMapping(value = "/assign", version = "v1")
     public ResponseEntity<AssignResponse> assignPermissionsToRole(@RequestBody @Valid AssignRolePermissionRequest request) {
         final AssignResponse response = rolePermissionAssignService.assignPermissionsToRole(request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/revoke")
+    @PostMapping(value = "/revoke", version = "v1")
     public ResponseEntity<RevokeResponse> revokePermissionFromRole(@RequestBody @Valid RevokeRolePermissionRequest request) {
         final RevokeResponse response = rolePermissionAssignService.revokePermissionFromRole(request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/{roleId}/permissions")
+    @GetMapping(value = "/{roleId}/permissions", version = "v1")
     public ResponseEntity<RoleWithPermissionsResponse> findPermissionByRoleId(@PathVariable @NotNull Long roleId) {
         final RoleWithPermissionsResponse responses = rolePermissionAssignService.findPermissionByRoleId(roleId);
         return ResponseEntity.status(HttpStatus.OK).body(responses);
     }
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all", version = "v1")
     public ResponseEntity<PageResponse<RoleWithPermissionsResponse>> findAllPermissionForParticularRoles(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "5") int size,

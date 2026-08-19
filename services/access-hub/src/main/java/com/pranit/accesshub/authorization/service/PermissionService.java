@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Set;
 
-public interface PermissionCrudService {
+public interface PermissionService {
 
     void createNewPermission(@Valid CreatePermissionRequest request);
 
